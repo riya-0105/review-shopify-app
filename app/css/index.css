@@ -1,0 +1,323 @@
+.container {
+    position: relative;
+    margin-top: "2rem";
+    width: 25rem; /* Adjust width as needed */
+  }
+  
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .image:hover {
+    opacity: 0; /* Hide the image when hovering over it */
+  }
+  
+  .image:hover + .video {
+    opacity: 1; /* Show the video when hovering over the image */
+  }
+
+  .generate_image_btn {
+    background-color: #C8A2C8; 
+    width: 20rem;
+    font-size: 2rem;
+    color: white;
+    border: none; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition effect */
+  }
+  
+  .generate_image_btn:hover {
+    background-color: #50C878; /* Change background color on hover */
+  }
+
+  .generate_href {
+    text-decoration: none;
+    color: white;
+  }
+
+  @keyframes tonext {
+    75% {
+        left: 0;
+    }
+    95% {
+        left: 100%;
+    }
+    98% {
+        left: 100%;
+    }
+    99% {
+        left: 0;
+    }
+}
+
+@keyframes tostart {
+    75% {
+        left: 0;
+    }
+    95% {
+        left: -300%;
+    }
+    98% {
+        left: -300%;
+    }
+    99% {
+        left: 0;
+    }
+}
+
+@keyframes snap {
+    96% {
+        scroll-snap-align: center;
+    }
+    97% {
+        scroll-snap-align: none;
+    }
+    99% {
+        scroll-snap-align: none;
+    }
+    100% {
+        scroll-snap-align: center;
+    }
+}
+
+ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel_container_width {
+    width: 100%;
+}
+
+.carousel {
+    box-sizing: border-box;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: 0px;
+    position: relative;
+    margin: 10px auto;
+    max-width: 38%;
+    padding-top: 40%;
+    filter: drop-shadow(0 0 10px #0003);
+    perspective: 100px;
+}
+
+.carousel__viewport {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    overflow-x: scroll;
+    /* counter-reset: item; */
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel__slide {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    /* counter-increment: item; */
+}
+
+.carousel__slide:nth-child(1) {
+    background-image: url("https://cdn.shopify.com/s/files/1/0597/2185/products/18k-rose-gold-infinite-link-earrings---3_d6c3d6dc-ebd4-480c-be8a-fa7422e672d2.jpg?v=1406749600");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.carousel__slide:nth-child(2) {
+    background-image: url("https://cdn.shopify.com/s/files/1/0938/8938/products/156014_black_black_l.jpeg?v=1445628952");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.carousel__slide:nth-child(3) {
+    background-image: url("https://cdn.shopify.com/s/files/1/0597/2185/products/18k-white-gold-fluid-lines-necklace.jpg?v=1406732178");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.carousel__slide:nth-child(4) {
+    background-image: url("https://cdn.shopify.com/s/files/1/0803/6591/products/hudderton-backpack_dc8afb13-448b-49d9-a042-5a163a97de8f.jpg?v=1426709346");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+.carousel__slide:before {
+    /* content: counter(item); */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -40%, 70px);
+    color: #fff;
+    font-size: 2em;
+}
+
+.carousel__snapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
+}
+
+@media (hover: hover) {
+    .carousel__snapper {
+        animation-name: tonext, snap;
+        animation-timing-function: ease;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+
+    .carousel__slide:last-child .carousel__snapper {
+        animation-name: tostart, snap;
+    }
+}
+
+
+@media (prefers-reduced-motion : reduce) {
+    .carousel__snapper {
+        animation-name: none;
+    }
+}
+
+.carousel:hover .carousel__snapper, .carousel:focus-within .carousel__snapper {
+    animation-name: none;
+}
+
+.carousel__navigation {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.carousel__navigation-list, .carousel__navigation-item {
+    display: inline-block;
+}
+
+.carousel__navigation-button {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #fff;
+    background-clip: content-box;
+    border: 0.25rem solid transparent;
+    border-radius: 50%;
+    font-size: 0;
+    transition: transform 0.1s;
+}
+
+.carousel::before, .carousel::after, .carousel__prev, .carousel__next {
+    position: absolute;
+    top: 0;
+    margin-top: 50%;
+    width: 4rem;
+    height: 4rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    font-size: 0;
+    outline: 0;
+}
+
+.carousel::before, .carousel__prev {
+    left: -1rem;
+}
+
+.carousel::after, .carousel__next {
+    right: -1rem;
+}
+
+.carousel::before, .carousel::after {
+    content: '';
+    z-index: 1;
+    background-color: #fff;
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #fff;
+    font-size: 6rem;
+    line-height: 8rem;
+    text-align: center;
+    pointer-events: none;
+}
+
+.carousel::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Font_Awesome_5_solid_arrow-circle-left.svg/768px-Font_Awesome_5_solid_arrow-circle-left.svg.png?20180810202550");
+}
+
+.carousel::after {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Circle_arrow_right_font_awesome.svg/768px-Circle_arrow_right_font_awesome.svg.png");
+}
+
+
+*::-webkit-scrollbar {
+    width: 0;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: none;
+}
+
+.carousel__search {
+    display: inline;
+    max-width: 100%;
+    display: inline;
+    padding: 20px 0px 20px 0px;
+    z-index: 1;
+    position: relative;
+}
+
+.carousel__search input {
+    width: 90%;
+    margin-right: 20px;
+    background-color: white;
+    border-color: transparent;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 2%;
+}
+
+.carousel__search input::placeholder {
+    color: black;
+}
+
+.carousel__search button {
+    color: #fff;
+    background-color: #318CE7;
+    border-radius: 5%;
+    border-color: transparent;
+    height: 53px;
+    font-size: 20px;
+    text-align: center;
+    width: 100px;
+}
+
+.carousel__search button:hover {
+    background-color: red;
+    border-radius: 30%;
+}
+/* 
+.background {
+    background: url();
+} */

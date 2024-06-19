@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0";
-const headers = { "Authorization": "Bearer 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" };
+const headers = { "Authorization": "" };
 
 export async function query(payload) {
     try {

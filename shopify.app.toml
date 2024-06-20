@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "616d485f41aaace7c39711511009269f"
+name = "review-and-management-app"
+handle = "review-and-management-app"
+application_url = "https://realm-beds-pro-sole.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "ai-image-blog-generation.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_orders,read_products,read_publications,read_returns,read_shopify_payments_payouts,write_orders,write_products,write_returns"
+
+[auth]
+redirect_urls = [
+  "https://realm-beds-pro-sole.trycloudflare.com/auth/callback",
+  "https://realm-beds-pro-sole.trycloudflare.com/auth/shopify/callback",
+  "https://realm-beds-pro-sole.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false
